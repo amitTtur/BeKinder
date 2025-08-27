@@ -5,6 +5,9 @@ const options = document.getElementById("options")
 let queryName = "first"
 let requestActive = false
 
+
+
+
 const optionElements = document.querySelectorAll('#options .option');
 optionElements.forEach(option => {
     option.addEventListener('click', () => {

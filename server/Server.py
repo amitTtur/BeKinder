@@ -13,11 +13,11 @@ def getLoginPage():
     return render_template('Login_page.html')
 
 @app.route('/login', methods=['POST'])
-def download_image():
+def loginCalc():
     # Get the image URL from the query parameters
-    username = request.args.get('Username')
+    username = request.form.get('username')
     print('Received download: ', username)
-    password = request.args.get('Password')
+    password = request.form.get('password')
     print('Received download: ', password)
     return '200'
 
