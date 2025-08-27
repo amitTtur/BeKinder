@@ -7,14 +7,18 @@ name_list = []
 
 
 @app.route('/', methods=['GET'])
-def getIndexPage():
-    return render_template('Login_page.html')
+def getFirstPage():
+    return render_template('/index.html')
 
 
 @app.route('/Login_page.html', methods=['GET'])
 def getLoginPage():
-    return render_template('Login_page.html')
+    return render_template('/Login_page.html')
 
+
+@app.route('/index.html',methods=['GET'])
+def getIndexPage():
+    return render_template('/index.html')
 
 @app.route('/login', methods=['POST'])
 def loginCalc():
