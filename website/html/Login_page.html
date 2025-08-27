@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+		<meta name="description">
+		<title>Lambda-login</title>
+
+		<link rel = "icon" type= "image/png" href = "../images/site_icon.png">
+		<link rel = "stylesheet" href="../css/login_style.css">
+    </head>
+    <body>
+        <span id="box">
+            <form id="login_form" action="/submit" method="post">
+                <input type="text" placeholder="Username" class="input_field full_width" name="username" required>
+                <input type="password" placeholder="Password" class="input_field full_width" name="password" required>
+                
+                <input type="submit" id="login_button" value="Login" class="fancy_button full_width">
+                <!--<a id="forgotPassword" href="https://www.google.com/" target="_blank">forgot your password?</a>-->
+                <hr>
+                <script src="../js/login_page.js"></script>
+            </form>
+           
+            <!--<div class="account_link"><button class="fancy_button full_width" id="createAcc">create an account</button></div>-->
+        </span>
+        <div id="WelcomeText">
+            <span style="font-size: 8vh;">
+                Helping, innovating, betterment.
+            </span>
+            <br>
+            <span style="font-size: 5vh; color: #4e855b; font-weight: bold;">BeKinder allows to find the next community service place, all for free</span>
+        </div>
+    </body>
+</html>

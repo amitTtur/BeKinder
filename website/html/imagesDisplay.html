@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description">
+        <title>site name</title>
+        <link rel="stylesheet" href="./css/imagesDisplay.css">
+        <link rel = "icon" type= "image/png" href = "./images/holder.png">
+    </head>
+    <body>
+        <div class="navContainer"> 
+            <div class="overlay hidden"></div>
+            <nav id="mainNav">
+                <div id="backButton" class="navButton">
+                    Go Back
+                </div>
+                <div id="downloadAllButton" class="navButton">
+                    Download All
+                </div>
+                <div id="chooseButton" class="navButton">
+                    Choose Download
+                </div>
+                <div id="displayButton" class="navButton">
+                    <div id="displayModeDisplay">somthing</div>
+                </div>
+            </nav>
+        </div>
+        <div id="imageGrid">
+            <!--<div class="imageContainer">
+                <div class="overlay hidden"></div>
+                <img draggable="false" class="imageHolder" src="https://i0.wp.com/astrascans.org/wp-content/uploads/2024/09/The-Strongest-Tamer-Returned-from-Another-World-with-his-Childhood-Friend-as-his-Familiar.png?resize=165,225" alt="">
+                <a draggable="false" class="downloadButtonImageHolder" href="https://i0.wp.com/astrascans.org/wp-content/uploads/2024/09/The-Strongest-Tamer-Returned-from-Another-World-with-his-Childhood-Friend-as-his-Familiar.png?resize=165,225" download><img draggable="false" class="imageDownload" src="./images/download.png" alt=""></a>
+                <label class="customCheckbox">
+                    <input class="checkboxInput" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>  
+            </div>-->
+        </div>
+
+        <div id="displayMenu" class="displayHidden">
+            <div class="displayMenuItem">Huge</div>
+            <div class="displayMenuItem">Big</div>
+            <div class="displayMenuItem">Medium</div>
+            <div class="displayMenuItem">Small</div>
+        </div>
+
+        <div id="displayOverlay" class="displayHidden"></div>
+
+        <div id="selectImageMenu" class="hidden">
+            <div id="selectImageCancel" class="selectItem">Cancel</div>
+            <div id="selectImageDownload" class="selectItem">Download</div>
+        </div>
+        <script src="./scripts/imagesDisplay.js"></script>
+    </body>
+</html>
