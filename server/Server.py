@@ -1,8 +1,16 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, render_template
 from flask_cors import CORS  # Import CORS
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+
+@app.route('/',methods=['GET'])
+def getIndexPage():
+    return render_template('Login_page.html')
+
+@app.route('/Login_page.html',methods=['GET'])
+def getLoginPage():
+    return render_template('Login_page.html')
 
 @app.route('/login', methods=['POST'])
 def download_image():
@@ -11,6 +19,7 @@ def download_image():
     print('Received download: ', username)
     password = request.args.get('Password')
     print('Received download: ', password)
+    return '200'
 
 
 
