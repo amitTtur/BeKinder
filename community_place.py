@@ -5,7 +5,7 @@ class CommunityPlace:
 
     def __init__(self, name, description, picture_path, id=None):
         """
-        The initialization function
+        The initialization function com
         :param name: the name of the community place, type string
         :param description: the description of the community place, type string
         :param picture_path: the path of the picture of the community place
