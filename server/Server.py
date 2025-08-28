@@ -104,7 +104,7 @@ def get_community_places():
     response.status_code = 200
     response.data = jsonify(list[i])
     i += 1
-    if i > len(places):
+    if i >= len(places):
         i = 0
     return response
 
