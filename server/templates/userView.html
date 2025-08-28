@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+		<meta name="description">
+		<title>site name</title>
+
+        <link rel = "icon" type= "image/png" href = "../images/holder.png">
+		<link rel = "stylesheet" href="{{ url_for('static',filename='css/userView.css') }}">
+    </head>
+    <body>
+        
+        <div id="contentHolder">
+            <div id="userImg">
+                <img draggable="false" src="{{ url_for('static',filename='images/user.png') }}" alt="">
+            </div>
+            
+            <div id="usernameBox">John Doe</div>
+            <div id="phoneNumberBox">1234567890</div>
+            <hr>
+
+            <img id="backButton" src="{{ url_for('static',filename='images/home.png') }}" alt="">
+
+            <div class="hoursHelpedText">Total number of hours donated to the community</div>
+            <div class="progressContainer">
+                <div class="progressFill" style="width: calc(400/2500 * 100%)">
+                    <span class="progressLabel">400</span>
+                </div>
+            </div>
+
+            <div class="hoursHelpedText">The most hours helped in a single event</div>
+            <div class="progressContainer">
+                <div class="progressFill" style="width: calc(14/20 * 100%)">
+                    <span class="progressLabel">14</span>
+                </div>
+            </div>
+
+            <hr>
+
+            <div id="commList">
+                <div class="commPlace">mada</div>
+                <div class="commPlace">farms</div>
+                <div class="commPlace">school helper teacher</div>
+                <div class="commPlace">yedidim</div>
+                <div class="commPlace">yediaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadim</div>
+            </div>
+
+
+        </div>
+
+
+        
+
+        <script src="{{ url_for('static',filename='js/userView.js') }}"></script>
+    </body>
+</html>
