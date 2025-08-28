@@ -1,8 +1,7 @@
-from flask import Flask, request, jsonify, send_file, render_template, make_response, Response
+from flask import Flask, request, jsonify, send_file, render_template, make_response
 from flask_cors import CORS  # Import CORS
 from community_place import CommunityPlace
 import os
-from db_users import *
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -12,7 +11,7 @@ IMAGES_FOLDER = os.path.join(os.getcwd(), "static/images")
 
 @app.route('/', methods=['GET'])
 def getFirstPage():
-    return render_template('/userView.html')
+    return render_template('/Login_page.html')
 
 
 @app.route('/Login_page.html', methods=['GET'])
@@ -20,29 +19,31 @@ def getLoginPage():
     return render_template('/Login_page.html')
 
 
-@app.route('/index.html', methods=['GET'])
+@app.route('/index.html',methods=['GET'])
 def getIndexPage():
     return render_template('/index.html')
 
-
 @app.route('/login', methods=['GET', 'POST'])
-def loginCalc():
-    # Get the image URL from the query parameters
-
-    username = request.form.get('username')
-    print('Received download: ', username)
-    password = request.form.get('password')
-    print('Received download: ', password)
+def login():
+    username = request.args.get('username')
+    print(username)
+    password = request.args.get('password')
+    print(password)
     name_list.append(username)
+    #
     response = make_response(name_list)
     response.set_cookie('username', username)
-    result = login_user(username, password)
+    response.status_code = 200
+    return response
 
-    if result == None:
-        return Response(f"{username}:{password}", status=201, mimetype='application/json')
-    else:
-        return response
 
+@app.route('/Login_page', methods=['GET'])
+def getLoginPageAll():
+    return render_template('/Login_page.html')
+
+@app.route('/register.html', methods=['GET'])
+def getRegisterPageAll():
+    return render_template('/register.html')
 
 @app.route('/community_places', methods=['GET'])
 def get_community_places():

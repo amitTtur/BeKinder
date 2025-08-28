@@ -55,3 +55,8 @@ function resetPosition() {
     swiper.style.transform = "translateX(-50%) rotate(0)";
     swiper.style.transition = "transform 300ms ease";
 }
+
+const userButton = document.addEventListener('userScreen')
+userButton.addEventListener('click',()=>{
+    window.location.href ='./userView.html','blank';
+});
