@@ -8,7 +8,7 @@ from db_users import *
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 name_list = []
-IMAGES_FOLDER = os.path.join(os.getcwd(), "static/images")
+IMAGES_FOLDER = os.path.join(os.getcwd(), "static/images/community")
 i = 0
 
 @app.route('/', methods=['GET'])
@@ -27,15 +27,6 @@ def getIndexPage():
 
 @app.route('/login', methods=['GET', 'POST'])
 def loginCalc():
-    # Get the image URL from the query parameters
-
-    username = request.form.get('username')
-    print('Received download: ', username)
-    password = request.form.get('password')
-    print('Received download: ', password)
-
-
-def login():
     username = request.args.get('username')
     print(username)
     password = request.args.get('password')
