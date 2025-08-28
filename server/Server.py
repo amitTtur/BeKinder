@@ -13,7 +13,7 @@ i = 0
 
 @app.route('/', methods=['GET'])
 def getFirstPage():
-    return render_template('/userView.html')
+    return render_template('/Login_page.html')
 
 
 @app.route('/Login_page.html', methods=['GET'])
@@ -67,9 +67,12 @@ def getRegister():
     phone = request.args.get('phone')
     print(phone)
 
+    user = User(username, password, phone)
 
+    result = register_user(user)
     response = make_response()
-    response.status_code = 200
+
+    response.status_code = 200 if result else 400
     return response
 
 

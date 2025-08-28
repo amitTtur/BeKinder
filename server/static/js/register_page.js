@@ -28,5 +28,5 @@ register_button.addEventListener('click', () => {
 });
 
 function gotoLogin(){
-    window.location.href = "./Login_page.html";
+    window.location.href = "Login_page.html";
 }
