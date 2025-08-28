@@ -6,5 +6,5 @@ function registerOnClick(){
 }
 
 function gotoLogin(){
-    window.location.href = "Login_page.html";
+    window.location.href = "./Login_page.html";
 }

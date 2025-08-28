@@ -11,7 +11,7 @@ IMAGES_FOLDER = os.path.join(os.getcwd(), "static/images")
 
 @app.route('/', methods=['GET'])
 def getFirstPage():
-    return render_template('/userView.html')
+    return render_template('/Login_page.html')
 
 
 @app.route('/Login_page.html', methods=['GET'])
@@ -19,22 +19,37 @@ def getLoginPage():
     return render_template('/Login_page.html')
 
 
+
+@app.route('/Login_page/<user>', methods=['GET'])
+def userView():
+    data = []
+
+    return render_template('/userView.html')
+
 @app.route('/index.html',methods=['GET'])
 def getIndexPage():
-    return render_template('/index.html')
+    return render_template('/Login_page.html')
 
-@app.route('/login', methods=['POST'])
-def loginCalc():
-    # Get the image URL from the query parameters
-    username = request.form.get('username')
-    print('Received download: ', username)
-    password = request.form.get('password')
-    print('Received download: ', password)
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    username = request.args.get('username')
+    print(username)
+    password = request.args.get('password')
+    print(password)
     name_list.append(username)
+    #
     response = make_response(name_list)
     response.set_cookie('username', username)
     return response
 
+
+@app.route('/Login_page', methods=['GET'])
+def getLoginPageAll():
+    return render_template('/Login_page.html')
+
+@app.route('/register.html', methods=['GET'])
+def getRegisterPageAll():
+    return render_template('/register.html')
 
 @app.route('/community_places', methods=['GET'])
 def get_community_places():

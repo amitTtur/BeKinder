@@ -178,6 +178,7 @@ br {
     background-color:  #50885F;
     color: #dadada;
     font-size: 3vh;
+    text-align: center;
 }
 
 #login_button:hover {
