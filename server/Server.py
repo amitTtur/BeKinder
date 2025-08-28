@@ -81,8 +81,8 @@ def getLoginPageAll():
 def getRegisterPageAll():
     return render_template('/register.html')
 
-@app.route('/community_places', methods=['GET'])
-def get_community_places():
+@app.route('/community_place', methods=['GET'])
+def get_community_place():
     global i
     places = []
     for idx, filename in enumerate(os.listdir(IMAGES_FOLDER)):
@@ -100,9 +100,8 @@ def get_community_places():
             "description": place.description,
             "picture_path": place.picture_path
         })
-    response = make_response()
+    response = jsonify(places[i])
     response.status_code = 200
-    response.data = jsonify(list[i])
     i += 1
     if i >= len(places):
         i = 0
