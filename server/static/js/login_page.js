@@ -14,10 +14,10 @@ loginButton.addEventListener('click',() => {
 
     console.log(urlWithParams)
 
-    fetch(urlWithParams, { // Use the constructed URL
-        method: 'GET', // GET requests don't need a body
+    fetch(urlWithParams, { 
+        method: 'GET', 
         headers: {
-            'Content-Type': 'application/json', // Optional for GET requests
+            'Content-Type': 'application/json', 
         }
     })
     .then(response => {
