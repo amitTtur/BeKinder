@@ -41,6 +41,21 @@ def userViewGet():
     return render_template('/userView.html')
 
 
+
+@app.route('/RegisterRequest', methods=['GET'])
+def getRegister():
+    username = request.args.get('username')
+    print(username)
+    password = request.args.get('password')
+    print(password)
+    phone = request.args.get('phone')
+    print(phone)
+
+
+    response = make_response()
+    response.status_code = 200
+    return response
+
 @app.route('/Login_page', methods=['GET'])
 def getLoginPageAll():
     return render_template('/Login_page.html')

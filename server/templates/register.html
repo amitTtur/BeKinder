@@ -5,7 +5,7 @@
 		<meta name="description">
 		<title>Lambda-login</title>
 
-        <script src="../static/js/register_page.js"></script>
+
 		<link rel = "icon" type= "image/png" href = "./images/site_icon.png">
         <link rel= "stylesheet" type= "text/css" href= "../static/css/login_style.css">
     </head>
@@ -14,9 +14,9 @@
             <form id="login_form" action="/login" method="post">
                 <input type="text" placeholder="Username" class="input_field full_width" id="username_id" name="username" required>
                 <input type="password" placeholder="Password" class="input_field full_width" id="password_id" name="password" required>
-                <input type="text" placeholder="Phone" class="input_field full_width" id="phone_id" name="phone_number" required>
+                <input type="number" placeholder="Phone" class="input_field full_width" id="phone_id" name="phone_number" required>
 
-                <input type="submit" id="register_button" onclick="registerOnClick()" value="Register" class="fancy_button full_width">
+                <input type="text" id="register_button" value="Register" class="fancy_button full_width">
                 <hr>
             </form>
 
@@ -29,5 +29,7 @@
             <br>
             <span style="font-size: 5vh; color: #4e855b; font-weight: bold;">BeKinder allows to find the next community service place, all for free</span>
         </div>
+
+        <script src="{{ url_for('static',filename='js/register_page.js') }}"></script>
     </body>
 </html>
