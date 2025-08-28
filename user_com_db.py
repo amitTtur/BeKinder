@@ -1,6 +1,7 @@
 import sqlite3
 from consts import *
 
+
 def init():
     open(DB_COM_USER, 'a').close()
     with sqlite3.connect(DB_COM_USER) as conn:

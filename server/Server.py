@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify, send_file, render_template, make_response
 from flask_cors import CORS  # Import CORS
+
+import db_users
 import user_com_db
 import db_community
 from community_place import CommunityPlace
@@ -97,6 +99,12 @@ def getRegisterPageAll():
 def get_community_place():
     global i
     places = []
+    descriptions = [
+        "trauma patients with national background",
+        "deal with medical challenges",
+        "donating to the community",
+        "helping animals"
+    ]
     for idx, filename in enumerate(os.listdir(IMAGES_FOLDER)):
         description = f"This is a description for {filename}"
         picture_path = f"/static/images/community/{filename}"
@@ -106,12 +114,12 @@ def get_community_place():
             picture_path=picture_path,
             id=idx
         )
-        com = CommunityPlace(place.get_name(), place.get_description(), place.get_picture_path())
+        com = CommunityPlace(place.get_name(), descriptions[i], place.get_picture_path())
         db_community.add_community_place(com)
         places.append({
             "id": place.id,
             "name": place.name,
-            "description": place.description,
+            "description": descriptions[i],
             "picture_path": place.picture_path
         })
     response = jsonify(places[i])
@@ -127,6 +135,25 @@ def userView():
     username = request.args.get('username')
     point = get_user_by_username(username)
     return jsonify(point)
+
+@app.route('/getUser', methods=['GET'])
+def getUser():
+    username = request.args.get('username')
+    user = db_users.get_user_by_username(username)
+
+    places = user.get_places()
+
+    dict_user = {
+        "userName": user.get_username(),
+        "phone": user.phone_num,
+        "hours": user.get_hours(),
+        "hoursmax": user.get_max_hours(),
+        "places": places
+    }
+
+    response = jsonify(dict_user)
+    response.status_code = 200
+    return response
 
 
 if __name__ == '__main__':
