@@ -56,7 +56,7 @@ def add_community_place(community_place: CommunityPlace):
         cur.execute(f"""INSERT INTO communities (name, description, picture_path) VALUES (?, ?, ?)""", params)
 
 
-def search_community_place(name, description) -> CommunityPlace | None:
+def search_community_place(name, description):
     """
     locates the community place in the database by its name and description
     :param name: the name of the community place, type string
@@ -64,6 +64,7 @@ def search_community_place(name, description) -> CommunityPlace | None:
     :return: the community place that was found, if community place was not found then returns None
     """
 
+    result = None
     with sqlite3.connect(DB_COMMUNITY_PATH) as conn:
         cur = conn.cursor()
         params = (name, description)
@@ -74,7 +75,7 @@ def search_community_place(name, description) -> CommunityPlace | None:
         return convert_tuple_to_object(result)
 
 
-def search_community_place_by_id(id) -> CommunityPlace | None:
+def search_community_place_by_id(id):
     """
     locates the community place in the database by its id
     :param id: the id of the community place, type int
@@ -91,7 +92,7 @@ def search_community_place_by_id(id) -> CommunityPlace | None:
         return convert_tuple_to_object(result)
 
 
-def get_all() -> list[CommunityPlace]:
+def get_all():
     """
     gets all the community places from the communities table
     :return: a list of CommunityPlace objects
@@ -110,7 +111,7 @@ def get_all() -> list[CommunityPlace]:
     return list_com_place
 
 
-def get_communities_by_user(user: User) -> list[CommunityPlace]:
+def get_communities_by_user(user: User):
     """
     gets a list of communities from the database that belong to the user
     :param user: a user object
