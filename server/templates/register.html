@@ -5,7 +5,7 @@
 		<meta name="description">
 		<title>Lambda-login</title>
 
-        <script src="../static/js/login_page.js"></script>
+        <script src="../static/js/register_page.js"></script>
 		<link rel = "icon" type= "image/png" href = "./images/site_icon.png">
         <link rel= "stylesheet" type= "text/css" href= "../static/css/login_style.css">
     </head>
@@ -14,13 +14,13 @@
             <form id="login_form" action="/login" method="post">
                 <input type="text" placeholder="Username" class="input_field full_width" id="username_id" name="username" required>
                 <input type="password" placeholder="Password" class="input_field full_width" id="password_id" name="password" required>
-                
-                <input type="submit" id="login_button" onclick="loginOnClick()" value="Login" class="fancy_button full_width">
-                <!--<a id="forgotPassword" href="https://www.google.com/" target="_blank">forgot your password?</a>-->
+                <input type="text" placeholder="Phone" class="input_field full_width" id="phone_id" name="phone_number" required>
+
+                <input type="submit" id="register_button" onclick="registerOnClick()" value="Register" class="fancy_button full_width">
                 <hr>
             </form>
 
-            <div class="account_link"><button class="fancy_button full_width" id="createAcc" onclick="gotoRegister()">create an account</button></div>
+            <div class="account_link"><button class="fancy_button full_width" id="createAcc" onclick="gotoLogin()">already have an account?</button></div>
         </span>
         <div id="WelcomeText">
             <span style="font-size: 8vh;">
