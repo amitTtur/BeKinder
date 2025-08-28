@@ -1,0 +1,151 @@
+* {
+    user-select: none;
+    box-sizing: border-box;
+    color: white;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(255, 232, 248);
+
+}
+
+#contentHolder {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 40%;
+    height: 100%;              
+    display: flex;
+    flex-direction: column;            
+    align-items: center;                
+    justify-content: flex-start;
+    background: linear-gradient(to bottom, rgb(236, 157, 213), rgb(255, 225, 240));
+    border: solid rgb(255, 12, 255) 0.1vh;
+}
+
+#contentHolder hr {
+    width: 80%;
+    border: none;
+    margin-top: 5em;
+    margin-bottom: 5em;
+    border-top: 2px solid purple; /* shows a purple line */
+    margin: 1rem 0;
+}
+
+#hoursHelped {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.hoursHelpedText {
+    font-size: 2rem;
+}
+
+.progressContainer {
+    width: 80%;
+    height: 2.5rem;
+    background-color: #d3d3d3;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(to right, purple, magenta);
+    transition: width 0.5s ease;
+}
+
+.progressLabel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: white;
+    pointer-events: none;          
+}
+
+
+#commList {
+    width: 80%;
+    height: 25%;                       
+    background-color: rgba(255, 156, 209, 0.95);
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.5rem;
+    row-gap: 0.5rem;     
+    justify-content: flex-start;
+    overflow-y: auto;                  
+    box-sizing: border-box;
+}
+
+
+
+.commPlace {
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: purple;
+    border-radius: 0.7rem;    
+    white-space: nowrap;    
+
+    height: 2rem;                
+    line-height: 2rem; 
+    padding: 0 1rem;             
+    box-sizing: border-box;
+}
+
+
+#backButton {
+    position: absolute;
+    left: 0;
+    top:0;  
+    height: 5vh;
+    width: auto;
+    margin: 2vh;
+    border-radius: 50%;
+}
+
+
+
+#userImg {
+    width: 20vh;
+    height: 20vh;
+    border-radius: 1em;           
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    margin-bottom: 1rem;
+}
+
+#userImg img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;              
+}
+
+#usernameBox {
+    font-size: 4rem;
+    font-weight: 600;
+    color: #f5f5f5;
+    text-align: center;
+}
+
+#phoneNumberBox {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 1.3rem;
+}

@@ -11,7 +11,7 @@ IMAGES_FOLDER = os.path.join(os.getcwd(), "static/images")
 
 @app.route('/', methods=['GET'])
 def getFirstPage():
-    return render_template('/index.html')
+    return render_template('/userView.html')
 
 
 @app.route('/Login_page.html', methods=['GET'])
