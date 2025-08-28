@@ -27,7 +27,7 @@ def get(username):
 def update(username, new_place):
     with sqlite3.connect(DB_COM_USER) as conn:
         cur = conn.cursor()
-        cur.execute("""SELECT FROM com_user WHERE username == ?""", (username, ))
+        cur.execute("""SELECT * FROM com_user WHERE username == ?""", (username, ))
         places = cur.fetchone()[1]
         places = places + "_" + new_place
         cur.execute("""INSERT INTO com_user WHERE username == ? VALUES (?, ?)""", (username, username, places))

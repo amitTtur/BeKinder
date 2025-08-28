@@ -60,7 +60,7 @@ function saveCommPlace()
 
     console.log('here')
 
-    const urlWithParams = `${BASE_URL}/save_commPlace?username=${encodeURIComponent(username)}&place=${encodeURIComponent(nameHolder.value)}`;
+    const urlWithParams = `${BASE_URL}/save_commPlace?username=${encodeURIComponent(username)}&place=${encodeURIComponent(nameHolder.textContent)}`;
 
     fetch(urlWithParams, { // Use the constructed URL
         method: 'GET', // GET requests don't need a body
