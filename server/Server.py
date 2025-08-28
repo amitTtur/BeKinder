@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify, send_file, render_template, make_response
 from flask_cors import CORS  # Import CORS
+import user_com_db
+import db_community
 from community_place import CommunityPlace
 import os
 
@@ -24,6 +26,18 @@ def getLoginPage():
 @app.route('/index.html',methods=['GET'])
 def getIndexPage():
     return render_template('/index.html')
+
+
+@app.route('/save_commPlace',methods=['GET'])
+def saveComPlace():
+    username = request.args.get("username")
+    place = request.args.get("place")
+
+    user_com_db.update(username, place)
+    response = make_response()
+    response.status_code(200)
+    return response
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def loginCalc():
@@ -60,6 +74,7 @@ def getRegister():
 
     user = User(username, password, phone)
 
+    user_com_db.add(username, "")
     result = register_user(user)
     response = make_response()
 
@@ -81,13 +96,15 @@ def get_community_place():
     places = []
     for idx, filename in enumerate(os.listdir(IMAGES_FOLDER)):
         description = f"This is a description for {filename}"
-        picture_path = f"/static/images/{filename}"
+        picture_path = f"/static/images/community/{filename}"
         place = CommunityPlace(
             name=filename.split('.')[0],
             description=description,
             picture_path=picture_path,
             id=idx
         )
+        com = CommunityPlace(place.get_name(), place.get_description(), place.get_picture_path())
+        db_community.add_community_place(com)
         places.append({
             "id": place.id,
             "name": place.name,
