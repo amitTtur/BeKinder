@@ -11,7 +11,7 @@ IMAGES_FOLDER = os.path.join(os.getcwd(), "static/images")
 
 @app.route('/', methods=['GET'])
 def getFirstPage():
-    return render_template('/Login_page.html')
+    return render_template('/userView.html')
 
 
 @app.route('/Login_page.html', methods=['GET'])
@@ -36,6 +36,25 @@ def login():
     response.status_code = 200
     return response
 
+@app.route('/userView.html', methods=['GET'])
+def userViewGet():
+    return render_template('/userView.html')
+
+
+
+@app.route('/RegisterRequest', methods=['GET'])
+def getRegister():
+    username = request.args.get('username')
+    print(username)
+    password = request.args.get('password')
+    print(password)
+    phone = request.args.get('phone')
+    print(phone)
+
+
+    response = make_response()
+    response.status_code = 200
+    return response
 
 @app.route('/Login_page', methods=['GET'])
 def getLoginPageAll():

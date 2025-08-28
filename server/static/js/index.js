@@ -56,7 +56,8 @@ function resetPosition() {
     swiper.style.transition = "transform 300ms ease";
 }
 
-const userButton = document.addEventListener('userScreen')
+const userButton = document.getElementById('userScreen');
 userButton.addEventListener('click',()=>{
+    console.log('here')
     window.location.href ='./userView.html','blank';
 });
