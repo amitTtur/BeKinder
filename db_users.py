@@ -11,6 +11,7 @@ INDEX_HOURS = 3
 INDEX_MAX_HOURS = 4
 INDEX_PLACES = 5
 
+
 def init_db():
     """
     this initializes the database and creates the table,\n only use this if this is the first time working with this database
@@ -36,14 +37,21 @@ def register_user(user: User):
     :return: None
     """
 
+    is_success = True
     with sqlite3.connect(DB_USERS_PATH) as conn:
         cur = conn.cursor()
         params = (user.get_username(), user.get_password(), user.get_phone_num(), user.get_hours(), user.get_max_hours(), user.get_places())
 
-        cur.execute(f"""INSERT INTO users VALUES (?, ?, ?, ?, ?, ?)""", params)
+        result = cur.execute("""SELECT * FROM users WHERE username=?""", (user.get_username(),))
+        if len(result) == 0:
+            cur.execute(f"""INSERT INTO users VALUES (?, ?, ?, ?, ?, ?)""", params)
+        else:
+            is_success = False
+
+    return is_success
 
 
-def login_user(username, password) -> User | None:
+def login_user(username, password):
     """
     locates the user in the database by its username and password
     :param username: the username of the user, type string
