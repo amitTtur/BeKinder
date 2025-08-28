@@ -86,7 +86,7 @@ body {
 
 #swiper {
     position: fixed;
-    background-color: aqua;
+    background-color: white;
     left: 50%;
     transform: translateX(-50%);
     width: 40%;

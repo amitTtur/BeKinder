@@ -26,7 +26,7 @@ function updateComm()
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error("Network response was not ok");
+            return
         }
         return response; // return the actual response object
     })
@@ -37,7 +37,6 @@ function updateComm()
         descHolder.textContent = data.description; 
         imgHolder.src = data.picture_path; 
     })
-
 }
 
 function getCookie(cname) {
@@ -58,7 +57,6 @@ function getCookie(cname) {
 function saveCommPlace()
 {
     let username = getCookie("username")
-
 
     console.log('here')
 
@@ -138,4 +136,5 @@ const userButton = document.getElementById('userScreen');
 userButton.addEventListener('click',()=>{
     console.log('here')
     window.location.href ='./userView.html','blank';
+
 });
