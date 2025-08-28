@@ -69,8 +69,12 @@ def getRegister():
     phone = request.args.get('phone')
     print(phone)
 
+    user = User(username, password, phone)
+
+    result = register_user(user)
     response = make_response()
-    response.status_code = 200
+
+    response.status_code = 200 if result else 400
     return response
 
 
@@ -112,13 +116,12 @@ def get_community_places():
     return response
 
 
-@app.route('/save_comPLace', methods=['GET', 'POST'])
-def getsavecomplace():
+@app.route('/userView.html', methods=['GET'])
+def userView():
     username = request.args.get('username')
-    place = request.args.get('place')
+    point = get_user_by_username(username)
+    return jsonify(point)
 
-@app.route('/register.html', methods=['GET'])
-def getuserData():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5500)
