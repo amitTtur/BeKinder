@@ -24,6 +24,7 @@ loginButton.addEventListener('click',() => {
         if (!response.ok) {
             return
         }
+        console.log('lkjdknw')
         window.location.href ='./index.html','blank';
     })
 });

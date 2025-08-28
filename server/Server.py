@@ -19,16 +19,9 @@ def getLoginPage():
     return render_template('/Login_page.html')
 
 
-
-@app.route('/Login_page/<user>', methods=['GET'])
-def userView():
-    data = []
-
-    return render_template('/userView.html')
-
 @app.route('/index.html',methods=['GET'])
 def getIndexPage():
-    return render_template('/Login_page.html')
+    return render_template('/index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -40,6 +33,7 @@ def login():
     #
     response = make_response(name_list)
     response.set_cookie('username', username)
+    response.status_code = 200
     return response
 
 
