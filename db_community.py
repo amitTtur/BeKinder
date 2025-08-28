@@ -92,6 +92,23 @@ def search_community_place_by_id(id):
         return convert_tuple_to_object(result)
 
 
+def search_community_place_by_name(com_name):
+    """
+    locates the community place in the database by its id
+    :param com_name: the name of the community place, type string
+    :return: the community place that was found, if community place was not found then returns None
+    """
+
+    with sqlite3.connect(DB_COMMUNITY_PATH) as conn:
+        cur = conn.cursor()
+        params = (com_name,)
+
+        cur.execute(f'SELECT * FROM communities WHERE name == ?', params)
+        result = cur.fetchone()
+
+        return convert_tuple_to_object(result)
+
+
 def get_all():
     """
     gets all the community places from the communities table
