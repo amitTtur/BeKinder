@@ -12,6 +12,25 @@ INDEX_MAX_HOURS = 4
 INDEX_PLACES = 5
 
 
+def convert_tuple_to_object(data):
+    """
+    converts a data tuple to an object initialized with said data
+    :param data: a data tuple
+    :return: a CommunityPlace object initialized with said data
+    """
+
+    user = User(
+        data[INDEX_USERNAME],
+        data[INDEX_PASSWORD],
+        data[INDEX_PHONE_NUM],
+        data[INDEX_HOURS],
+        data[INDEX_MAX_HOURS],
+        data[INDEX_PLACES]
+    )
+
+    return user
+
+
 def init_db():
     """
     this initializes the database and creates the table,\n only use this if this is the first time working with this database
@@ -65,3 +84,39 @@ def login_user(username, password):
 
         cur.execute(f'SELECT * FROM users WHERE username == ? AND password == ?', params)
         result = cur.fetchone()
+        return convert_tuple_to_object(result)
+
+
+def get_user_by_username(username):
+    """
+        locates the user in the database by its username
+        :param username: the username of the user, type string
+        :return: the user the was found, if user was not found then returns None
+        """
+
+    with sqlite3.connect(DB_USERS_PATH) as conn:
+        cur = conn.cursor()
+        params = (username, )
+
+        cur.execute(f'SELECT * FROM users WHERE username == ?', params)
+        result = cur.fetchone()
+        return convert_tuple_to_object(result)
+
+
+def get_all():
+    """
+    gets all the users from the users table
+    :return: a list of User objects
+    """
+
+    list_users = []
+    with sqlite3.connect(DB_USERS_PATH) as conn:
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM users")
+        result = cur.fetchall()
+
+        for row in result:
+            user = convert_tuple_to_object(row)
+            list_users.append(user)
+
+    return list_users
