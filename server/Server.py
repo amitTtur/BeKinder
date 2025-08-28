@@ -11,9 +11,10 @@ name_list = []
 IMAGES_FOLDER = os.path.join(os.getcwd(), "static/images")
 i = 0
 
+
 @app.route('/', methods=['GET'])
 def getFirstPage():
-    return render_template('/Login_page.html')
+    return render_template('/userView.html')
 
 
 @app.route('/Login_page.html', methods=['GET'])
@@ -21,9 +22,10 @@ def getLoginPage():
     return render_template('/Login_page.html')
 
 
-@app.route('/index.html',methods=['GET'])
+@app.route('/index.html', methods=['GET'])
 def getIndexPage():
     return render_template('/index.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def loginCalc():
@@ -52,10 +54,10 @@ def login():
     response.status_code = 200
     return response
 
+
 @app.route('/userView.html', methods=['GET'])
 def userViewGet():
     return render_template('/userView.html')
-
 
 
 @app.route('/RegisterRequest', methods=['GET'])
@@ -67,12 +69,8 @@ def getRegister():
     phone = request.args.get('phone')
     print(phone)
 
-    user = User(username, password, phone)
-
-    result = register_user(user)
     response = make_response()
-
-    response.status_code = 200 if result else 400
+    response.status_code = 200
     return response
 
 
@@ -80,12 +78,14 @@ def getRegister():
 def getLoginPageAll():
     return render_template('/Login_page.html')
 
+
 @app.route('/register.html', methods=['GET'])
 def getRegisterPageAll():
     return render_template('/register.html')
 
-@app.route('/community_place', methods=['GET'])
-def get_community_place():
+
+@app.route('/community_places', methods=['GET'])
+def get_community_places():
     global i
     places = []
     for idx, filename in enumerate(os.listdir(IMAGES_FOLDER)):
@@ -103,13 +103,22 @@ def get_community_place():
             "description": place.description,
             "picture_path": place.picture_path
         })
-    response = jsonify(places[i])
+    response = make_response()
     response.status_code = 200
+    response.data = jsonify(places[i])
     i += 1
     if i >= len(places):
         i = 0
     return response
 
+
+@app.route('/save_comPLace', methods=['GET', 'POST'])
+def getsavecomplace():
+    username = request.args.get('username')
+    place = request.args.get('place')
+
+@app.route('/register.html', methods=['GET'])
+def getuserData():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5500)
