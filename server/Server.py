@@ -11,7 +11,7 @@ IMAGES_FOLDER = os.path.join(os.getcwd(), "static/images")
 
 @app.route('/', methods=['GET'])
 def getFirstPage():
-    return render_template('/Login_page.html')
+    return render_template('/userView.html')
 
 
 @app.route('/Login_page.html', methods=['GET'])
@@ -35,6 +35,10 @@ def login():
     response.set_cookie('username', username)
     response.status_code = 200
     return response
+
+@app.route('/userView.html', methods=['GET'])
+def userViewGet():
+    return render_template('/userView.html')
 
 
 
