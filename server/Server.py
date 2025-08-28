@@ -1,7 +1,8 @@
-from flask import Flask, request, jsonify, send_file, render_template, make_response
+from flask import Flask, request, jsonify, send_file, render_template, make_response, Response
 from flask_cors import CORS  # Import CORS
 from community_place import CommunityPlace
 import os
+from db_users import *
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -19,13 +20,15 @@ def getLoginPage():
     return render_template('/Login_page.html')
 
 
-@app.route('/index.html',methods=['GET'])
+@app.route('/index.html', methods=['GET'])
 def getIndexPage():
     return render_template('/index.html')
 
-@app.route('/login', methods=['POST'])
+
+@app.route('/login', methods=['GET', 'POST'])
 def loginCalc():
     # Get the image URL from the query parameters
+
     username = request.form.get('username')
     print('Received download: ', username)
     password = request.form.get('password')
@@ -33,7 +36,12 @@ def loginCalc():
     name_list.append(username)
     response = make_response(name_list)
     response.set_cookie('username', username)
-    return response
+    result = login_user(username, password)
+
+    if result == None:
+        return Response(f"{username}:{password}", status=201, mimetype='application/json')
+    else:
+        return response
 
 
 @app.route('/community_places', methods=['GET'])

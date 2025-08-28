@@ -1,2 +1,2 @@
-DB_USERS_PATH = "databases/users.sqlite"
-DB_COMMUNITY_PATH = "databases/community.sqlite"
+DB_USERS_PATH = "templates/users.sqlite"
+DB_COMMUNITY_PATH = "templates/community.sqlite"
