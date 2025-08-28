@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(data =>{
         console.log(data);
-        userName.textContent = data.name; 
+        userName.textContent = data.userName; 
         phone.textContent = data.phone; 
 
         hours.textContent = data.hours; 
-        hoursBar.style.width = `width: calc(${data.hours}/2500 * 100%)`;  
-        phone.textContent = data.hoursmax; 
-        phone.textContent = `width: calc(${data.hoursmax}/20 * 100%)`; 
+        hoursBar.style.width = `calc(${data.hours}/2500 * 100%)`;  
+        maxhours.textContent = data.hoursmax; 
+        maxhoursBar.style.width = `calc(${data.hoursmax}/20 * 100%)`; 
 
         places = data.places.split('_')
 
